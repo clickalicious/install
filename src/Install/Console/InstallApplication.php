@@ -35,12 +35,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Install\Console\Command;
 
 /**
- * Phinx console application.
+ * Install console application.
  *
- * @author Rob Morgan <robbym@gmail.com>
+ * @author Benjamin Carl <opensource@clickalicious.de>
  */
-class PhinxApplication extends Application
+class InstallApplication extends Application
 {
+    const VERSION = '0.1.0';
+
     /**
      * Class Constructor.
      *
@@ -48,10 +50,11 @@ class PhinxApplication extends Application
      *
      * @param string $version The Application Version
      */
-    public function __construct($version = '0.6.6')
+    public function __construct($version = self::VERSION)
     {
-        parent::__construct('Phinx by Rob Morgan - https://phinx.org.', $version);
+        parent::__construct('Install by Benjamin Carl - https://github.com/ .', $version);
 
+        /*
         $this->addCommands(array(
             new Command\Init(),
             new Command\Create(),
@@ -63,6 +66,7 @@ class PhinxApplication extends Application
             new Command\SeedCreate(),
             new Command\SeedRun(),
         ));
+        */
     }
 
     /**

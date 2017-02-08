@@ -4,7 +4,7 @@
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd
 ">
   <testsuites>
-    <testsuite name="Clickalicious\Install Test Suite">
+    <testsuite name="clickalicious\install Test Suite">
       <directory suffix="Test.php">./tests</directory>
     </testsuite>
   </testsuites>

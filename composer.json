@@ -1,6 +1,6 @@
 {
   "name": "clickalicious/install",
-  "description": "The deployment installer for binaries, phar's or shell and batch scripts.",
+  "description": "Installer for installing binary-, phar-, shell- or batch-files from local or remote source.",
   "type": "project",
   "authors": [
     {
@@ -51,13 +51,13 @@
     "shell",
     "sh"
   ],
-  "homepage": "https://github.com/clickalicious/Install",
+  "homepage": "https://clickalicious.github.io/install",
   "license": "MIT",
   "support": {
     "email": "opensource@clickalicious.de",
-    "issues": "https://github.com/clickalicious/Install/issues",
-    "wiki": "https://github.com/clickalicious/Install/wiki",
-    "tests": "https://clickalicious.github.io/Install"
+    "issues": "https://github.com/clickalicious/install/issues",
+    "wiki": "https://github.com/clickalicious/install/wiki",
+    "tests": "https://clickalicious.github.io/install"
   },
   "config": {
     "bin-dir": "bin",
