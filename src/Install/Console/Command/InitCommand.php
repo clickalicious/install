@@ -27,56 +27,39 @@
  * @package    Install
  * @subpackage Install\Console
  */
-namespace Install\Console;
+namespace Install\Console\Command;
 
-use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Install\Console\Command;
 
-/**
- * Install console application.
- *
- * @author Benjamin Carl <opensource@clickalicious.de>
- */
-class InstallApplication extends Application
+class InitCommand extends Command
 {
-    const VERSION = '0.1.0';
-
     /**
-     * Class Constructor.
+     * Configuration
      *
-     * Initialize the Phinx console application.
-     *
-     * @param string $version The Application Version
+     * @return void
      */
-    public function __construct($version = self::VERSION)
-    {
-        parent::__construct(
-            'install by clickalicious UG | Benjamin Carl - https://github.com/clickalicious/install.', $version
-        );
-
-        $this->addCommands(array(
-            new Command\InitCommand(),
-        ));
+    protected function configure() {
+        $this->setName("hello")
+             ->setDescription("This command prints 'Hello World!'")
+             ->setDefinition(array(
+                 new InputOption('flag', 'f', InputOption::VALUE_NONE, 'Raise a flag'),
+                 new InputArgument('activities', InputArgument::IS_ARRAY, 'Space-separated activities to perform', null),
+             ))
+             ->setHelp("The <info>hello</info> command just prints 'Hello World!'");
     }
 
     /**
-     * Runs the current application.
+     * Executes the command
      *
-     * @param InputInterface $input An Input instance
-     * @param OutputInterface $output An Output instance
-     * @return integer 0 if everything went fine, or an error code
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int|null|void
      */
-    public function doRun(InputInterface $input, OutputInterface $output)
-    {
-        // always show the version information except when the user invokes the help
-        // command as that already does it
-        if (false === $input->hasParameterOption(array('--help', '-h')) && null !== $input->getFirstArgument()) {
-            $output->writeln($this->getLongVersion());
-            $output->writeln('');
-        }
-
-        return parent::doRun($input, $output);
+    protected function execute(InputInterface $input, OutputInterface $output) {
+        $output->writeln("Hello World!");
     }
 }

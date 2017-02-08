@@ -17,6 +17,8 @@
     "roave/security-advisories": "dev-master as 1.0.x-dev",
     "clickalicious/rng": "^1.1",
     "symfony/console": "^3.2",
+    "symfony/config": "^3.2",
+    "symfony/yaml": "^3.2",
     "guzzle/guzzle": "^3.9"
   },
   "require-dev": {
@@ -25,11 +27,11 @@
   },
   "autoload": {
     "psr-4": {
-      "Install\\": "src/Install/",
-      "exclude-from-classmap": [
-        "src/composer_autoloader.php"
-      ]
-    }
+      "Install\\": "src/Install/"
+    },
+    "exclude-from-classmap": [
+      "src/composer_autoloader.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {

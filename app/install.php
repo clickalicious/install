@@ -35,4 +35,4 @@ if (!$autoloader()) {
     );
 }
 
-return new Phinx\Console\PhinxApplication();
+return new Install\Console\InstallApplication();

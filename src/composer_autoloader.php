@@ -32,16 +32,14 @@
  * @return boolean
  */
 return function () {
-    $files = array(
-        __DIR__ . '/../../../autoload.php',  // composer dependency
-        __DIR__ . '/../vendor/autoload.php', // stand-alone package
-    );
+
+    $files = [
+        dirname(__DIR__, 3) . '/autoload.php',          // composer dependency
+        dirname(__DIR__, 1) . '/vendor/autoload.php',   // stand-alone package
+    ];
 
     foreach ($files as $file) {
-        var_dump($file);
-        die;
-
-        if (is_file($file)) {
+        if (true === is_file($file)) {
             require_once $file;
             return true;
         }
