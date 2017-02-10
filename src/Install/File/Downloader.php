@@ -112,6 +112,8 @@ class Downloader
         } catch (\Exception $exception) {
             return $exception->getMessage();
         }
+
+        return true;
     }
 
     /**
@@ -128,7 +130,8 @@ class Downloader
     protected function downloadFile($uri, $filename, callable $progressCallback = null)
     {
         if (null === $progressCallback) {
-            $progressCallback = function(){};
+            $progressCallback = function () {
+            };
         }
 
         $response = $this->client->request(
@@ -169,8 +172,7 @@ class Downloader
         }
 
         if (true === file_exists($source) && true === is_file($source) && false === is_dir($source)) {
-            #unlink($source);
-            echo 'UNLINK';
+            unlink($source);
         }
     }
 }

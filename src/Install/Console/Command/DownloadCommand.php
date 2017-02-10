@@ -29,11 +29,12 @@
  * @package    Install
  * @subpackage Install\Console
  */
+
 namespace Install\Console\Command;
 
+use Install\Console\Helper\ProgressbarFactory;
 use Install\File\Downloader;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -113,63 +114,29 @@ class DownloadCommand extends Command
         $temporaryDirectory   = $input->getArgument('temporary-directory');
         $ignoreSslCertificate = $input->getOption('ignore-ssl-certificate');
 
-        # MOVE to callback factory
-
-        /**
-         * Callback for displaying progressbar.
-         *
-         * @param int $downloadBytesTotal       Total number of bytes to transfer.
-         * @param int $downloadBytesTransferred Number of bytes actually transferred.
-         *
-         * @author Benjamin Carl <opensource@clickalicious.de>
-         *
-         */
-        $progressBarCallback = function (
-            $downloadBytesTotal,
-            $downloadBytesTransferred
-        ) use ($output) {
-
-            static $progressBar;
-
-            if (null === $progressBar && $downloadBytesTotal > 0) {
-                $progressBar = new ProgressBar($output, $downloadBytesTotal);
-                $progressBar->start();
-
-            } elseif (null !== $progressBar) {
-                $progressBar->setProgress($downloadBytesTransferred);
-
-                if ($downloadBytesTransferred >= $downloadBytesTotal) {
-                    $progressBar->finish();
-                }
-            }
-
-            usleep(1000);
-        };
-
-        # END MOVE to callback factory
-
-
-        $downloader = new Downloader($ignoreSslCertificate);
+        $progressbarFactory = new ProgressbarFactory();
+        $downloader         = new Downloader($ignoreSslCertificate);
 
         // Start download
         if (true !== $result = $downloader->download(
-            $fileUri,
-            $destinationDirectory,
-            $destinationFilename,
-            $temporaryDirectory,
-            $temporaryFilename,
-            $progressBarCallback
+                $fileUri,
+                $destinationDirectory,
+                $destinationFilename,
+                $temporaryDirectory,
+                $temporaryFilename,
+                $progressbarFactory->create($output)
             )
         ) {
             $output->writeln("\n");
             $output->writeln(
-                sprintf('<error>Error downloading file: "%s"</error>', $result)
+                sprintf('<error>Error "%s" while downloading file "%s".</error>', $result, $fileUri)
             );
 
         } else {
             $output->writeln("\n");
-            $output->writeln("<info>Download complete</info>");
-
+            $output->writeln(
+                sprintf('<info>File "%s" downloaded successful.</info>', $fileUri)
+            );
         }
     }
 }
