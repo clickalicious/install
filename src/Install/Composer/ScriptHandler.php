@@ -1,5 +1,7 @@
 <?php
-/* Install
+
+/**
+ * Install
  *
  * (The MIT license)
  * Copyright 2017 clickalicious UG, Benjamin Carl
@@ -23,43 +25,30 @@
  * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
- * @package    Install
- * @subpackage Install\Console
  */
-namespace Install\Console\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
+namespace Install\Composer;
 
-class InitCommand extends Command
+use Composer\Script\Event;
+
+/**
+ * Class ScriptHandler
+ *
+ * @package Install\Composer
+ * @author  Benjamin Carl <opensource@clickalicious.de>
+ */
+class ScriptHandler
 {
     /**
-     * Configuration
+     * installFiles handles the call for file installation from composer.json
      *
-     * @return void
-     */
-    protected function configure() {
-        $this->setName("hello")
-             ->setDescription("This command prints 'Hello World!'")
-             ->setDefinition(array(
-                 new InputOption('flag', 'f', InputOption::VALUE_NONE, 'Raise a flag'),
-                 new InputArgument('activities', InputArgument::IS_ARRAY, 'Space-separated activities to perform', null),
-             ))
-             ->setHelp("The <info>hello</info> command just prints 'Hello World!'");
-    }
-
-    /**
-     * Executes the command
+     * @param \Composer\Script\Event $event
      *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return int|null|void
+     * @author Benjamin Carl <opensource@clickalicious.de>
      */
-    protected function execute(InputInterface $input, OutputInterface $output) {
-        $output->writeln("Hello World!");
+    public static function installFiles(Event $event)
+    {
+        dump($event);
+        die;
     }
 }

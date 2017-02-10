@@ -1,5 +1,6 @@
 <?php
-/* Install
+/**
+ * Install
  *
  * (The MIT license)
  * Copyright 2017 clickalicious UG, Benjamin Carl
@@ -34,13 +35,14 @@
 return function () {
 
     $files = [
-        dirname(__DIR__, 3) . '/autoload.php',          // composer dependency
-        dirname(__DIR__, 1) . '/vendor/autoload.php',   // stand-alone package
+        dirname(__DIR__, 3).'/autoload.php',          // composer dependency
+        dirname(__DIR__, 1).'/vendor/autoload.php',   // stand-alone package
     ];
 
     foreach ($files as $file) {
         if (true === is_file($file)) {
             require_once $file;
+
             return true;
         }
     }
