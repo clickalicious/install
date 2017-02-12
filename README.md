@@ -5,7 +5,7 @@
 
 Installer for **installing binary-, phar-, shell- or batch-files from local or remote** source.
 
-| [![CircleCI branch](https://img.shields.io/circleci/project/github/clickalicious/install/master.svg)](https://circleci.com/gh/clickalicious/install) 	| [![Codacy branch grade](https://img.shields.io/codacy/grade/8c129b9effb64446a8d2d30eaf305679/master.svg)](https://www.codacy.com/app/clickalicious/install?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/install&utm_campaign=Badge_Grade) 	| [![Codacy coverage](https://img.shields.io/codacy/coverage/8c129b9effb64446a8d2d30eaf305679.svg)](https://www.codacy.com/app/clickalicious/install?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/install&utm_campaign=Badge_Grade) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://www.clickalicious.de/) 	|
+| [![Travis branch](https://img.shields.io/travis/clickalicious/install/master.svg)](https://travis-ci.org/clickalicious/install) 	| [![Codacy branch grade](https://img.shields.io/codacy/grade/8c129b9effb64446a8d2d30eaf305679/master.svg)](https://www.codacy.com/app/clickalicious/install?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/install&utm_campaign=Badge_Grade) 	| [![Codacy coverage](https://img.shields.io/codacy/coverage/8c129b9effb64446a8d2d30eaf305679.svg)](https://www.codacy.com/app/clickalicious/install?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/install&utm_campaign=Badge_Grade) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://www.clickalicious.de/) 	|
 |---	|---	|---	|---	|
 | [![GitHub release](https://img.shields.io/github/release/clickalicious/install.svg?style=flat)](https://github.com/clickalicious/install/releases) 	| [![](https://img.shields.io/github/issues-raw/clickalicious/install.svg)](https://github.com/clickalicious/install/issues)  	| [![Issue Stats](https://img.shields.io/issuestats/i/github/clickalicious/install.svg)](https://github.com/clickalicious/install/issues) 	| [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)  	|
 
@@ -82,7 +82,7 @@ For a consistent versioning i decided to make use of `Semantic Versioning 2.0.0`
 - [ ] Target stable release `1.0.0`
 - [ ] `>= 90%` test coverage
 
-[![Throughput Graph](https://graphs.waffle.io/clickalicious/Rng/throughput.svg)](https://waffle.io/clickalicious/install/metrics)
+[![Throughput Graph](https://graphs.waffle.io/clickalicious/install/throughput.svg)](https://waffle.io/clickalicious/install/metrics)
 
 
 ## Security Issues

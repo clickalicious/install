@@ -61,9 +61,10 @@ class ScriptHandlerTest extends TestCase
     {
         parent::setUp();
 
-        $this->event = $this->prophesize('Composer\Script\Event');
-        $this->io = $this->prophesize('Composer\IO\IOInterface');
+        $this->event   = $this->prophesize('Composer\Script\Event');
+        $this->io      = $this->prophesize('Composer\IO\IOInterface');
         $this->package = $this->prophesize('Composer\Package\PackageInterface');
+
         /* @var $composer \Composer\Composer */
         $composer = $this->prophesize('Composer\Composer');
 
@@ -77,13 +78,18 @@ class ScriptHandlerTest extends TestCase
      */
     public function testInvalidConfiguration(array $extras, $exceptionMessage)
     {
-        $this->package->getExtra()->willReturn($extras);
+        dump($extras);
+        dumnp($exceptionMessage);
+        die;
 
-        chdir(__DIR__);
 
-        $this->setExpectedException('InvalidArgumentException', $exceptionMessage);
+        #$this->package->getExtra()->willReturn($extras);
 
-        ScriptHandler::install($this->event->reveal());
+        #chdir(__DIR__);
+
+        #$this->setExpectedException('InvalidArgumentException', $exceptionMessage);
+
+        #ScriptHandler::installFiles($this->event->reveal());
     }
 
     public function provideInvalidConfiguration()

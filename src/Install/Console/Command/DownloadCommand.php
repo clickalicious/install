@@ -135,7 +135,10 @@ class DownloadCommand extends Command
         } else {
             $output->writeln("\n");
             $output->writeln(
-                sprintf('<info>File "%s" downloaded successful.</info>', $fileUri)
+                sprintf(
+                    '<info>File "%s" downloaded successful to.</info>',
+                    $fileUri
+                )
             );
         }
     }

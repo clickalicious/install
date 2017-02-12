@@ -131,6 +131,7 @@ class Downloader
     {
         if (null === $progressCallback) {
             $progressCallback = function () {
+                // Empty callback
             };
         }
 

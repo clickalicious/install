@@ -29,12 +29,13 @@
  * @package    Install
  * @subpackage Install\Console
  */
+
 namespace Install\Console\Command;
 
+use Install\File\Installer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -55,11 +56,7 @@ class InstallCommand extends Command
         $this->setName('file:install')
              ->setDescription('This command installs a file in local OS.')
              ->setDefinition([
-                 new InputOption('flag', 'f', InputOption::VALUE_NONE, 'Raise a flag'),
-                 new InputArgument('activities',
-                     InputArgument::IS_ARRAY,
-                     'Space-separated activities to perform',
-                     null),
+                 new InputArgument('file-name', InputArgument::REQUIRED, 'File name and path being installed.')
              ])
              ->setHelp('The <info>install</info> command installs/registers a file from local filesystem in OS.');
     }
@@ -74,6 +71,27 @@ class InstallCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('INSTALL');
+        $fileName = $input->getArgument('file-name');
+
+        $operatingSystem = strtolower(php_uname('s'));
+
+        $installer = new Installer(
+            new Installer\InstallerFactory($operatingSystem)
+        );
+
+        // Start install
+        if (true !== $result = $installer->install($fileName)) {
+            $output->writeln(
+                sprintf('<error>Error "%s" while installing file "%s".</error>', $result, $fileName)
+            );
+
+        } else {
+            $output->writeln(
+                sprintf(
+                    '<info>File "%s" installed successful.</info>',
+                    $fileName
+                )
+            );
+        }
     }
 }

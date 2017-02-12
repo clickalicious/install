@@ -26,3 +26,22 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+namespace Install\File\Installer;
+
+/**
+ * Class InstallerFactory
+ *
+ * @package Install\File\Installer
+ * @author  Benjamin Carl <opensource@clickalicious.de>
+ */
+class LinuxInstaller extends AbstractInstaller implements InstallerInterface
+{
+    /**
+     * @inheritdoc
+     */
+    public function install($file, $updatePath = false)
+    {
+        return true;
+    }
+}
